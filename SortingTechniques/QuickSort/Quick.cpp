@@ -5,7 +5,7 @@ int partition(int a[],int p,int r)
 		int x,t;
 		x=a[r];
 		int i=p-1;
-		for(int j=p;j<r-1;j++)
+		for(int j=p;j<=r-1;j++)
 		{
 				if(a[j] <= x){
 					i++;
@@ -31,19 +31,31 @@ void quicksort(int a[],int p,int r)
 			
 
 }
-void print(int a[],int N)
-{
-		for(int i=0;i<N;i++)
-		{
-				cout<<a[i]<<"|";
-		}
-		cout<<endl;
-}
+void print(int *a,int N);
 int main()
 {
-	int a[] = {5,3,6,7,9,8,1,36,58,6,5,4,21,-1},N=14;
+	int N;
+	cout<<"Enter the Number of Elemets to be sorted : ";
+	cin>>N;
+	int *a = new int [N];
+	cout<<"Enter "<<N<<" Elemets to be sorted : "<<endl;
+	for(int i=0;i<N;i++)
+	{
+		cin>>a[i];
+	}
+	cout<<"Unsorted Sequence : "<<endl;
+	print(a,N);	
+	quicksort(a,0,N-1);
+	cout<<"Sorted Sequence : "<<endl;
 	print(a,N);
-	quicksort(a,0,N);
-	print(a,N);
-	return 0;
+	delete[] a;
+	return 0;	
+}
+void print(int *a,int N)
+{
+	for(int i=0;i<N;i++)
+	{
+		cout<<a[i]<<" : ";
+	}
+	cout<<endl;
 }
