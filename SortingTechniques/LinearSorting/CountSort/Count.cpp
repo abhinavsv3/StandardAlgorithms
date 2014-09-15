@@ -11,12 +11,9 @@ void CountSort(int *a,int *b,int k,int N)
 		c[a[j]]++;
 	for(int i=1;i<k;i++)
 		c[i]+=c[i-1];
-	print(c,k);
 	for(int j=N-1;j>=0;j--){
 		b[c[a[j]]-1] = a[j];
 		c[a[j]]--;
-		print(c,k);
-		print(b,N);
 	}
 	delete[] c;
 }
